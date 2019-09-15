@@ -33,26 +33,27 @@ class HashMap {
 
         if(!this._hashTable[index]){
             this.length++;
-            this._hashTable[index] = {
-                key,
-                value,
-                DELETED: false
-            }; 
         }
-        else {
-            for (let i = 0; i < this._hashTable.length; i++) {
-                if (!this._hashTable[i]) {
-                    this.length++;
-                    this._hashTable[i] = {
-                        key,
-                        value,
-                        DELETED: false
-                    }
-                    return;
-                }
-            }
-        }
+        this._hashTable[index] = {
+            key,
+            value,
+            DELETED: false
+        }; 
     }
+        // else {
+        //     for (let i = 0; i < this._hashTable.length; i++) {
+        //         if (!this._hashTable[i]) {
+        //             this.length++;
+        //             this._hashTable[i] = {
+        //                 key,
+        //                 value,
+        //                 DELETED: false
+        //             }
+        //             return;
+        //         }
+        //     }
+        // }
+// }
 
     _findSlot(key) {
         const hash = HashMap._hashString(key);
@@ -91,6 +92,24 @@ class HashMap {
                 this.set(slot.key, slot.value);
             }
         }
+    }
+
+    removeDuplicates(string) {
+        // loop through the string, check each letter to see if it is duplicated, 
+        this._hashTable = [];
+
+        for(var i = 0; i < string.length; i++) {
+            let value = this._findSlot(string[i]);
+            console.log(value)
+            
+            if(!this._hashTable[value] || this._hashTable[value] === string[i]) {
+                console.log(string[i])
+                this.set(value, string[i])
+            } 
+            console.log(this._hashTable)
+        }
+        // if it is a dupe, delete it
+        // if it is not, add it to a new string.
     }
 }
 
