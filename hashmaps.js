@@ -97,19 +97,18 @@ class HashMap {
     removeDuplicates(string) {
         // loop through the string, check each letter to see if it is duplicated, 
         this._hashTable = [];
+        let newStr = '';
 
         for(var i = 0; i < string.length; i++) {
             let value = this._findSlot(string[i]);
-            console.log(value)
-            
+
             if(!this._hashTable[value] || this._hashTable[value] === string[i]) {
-                console.log(string[i])
-                this.set(value, string[i])
+                this.set(string[i], string[i])
+                newStr += string[i]
             } 
             console.log(this._hashTable)
-        }
-        // if it is a dupe, delete it
-        // if it is not, add it to a new string.
+            console.log(newStr)
+        }``
     }
 }
 
